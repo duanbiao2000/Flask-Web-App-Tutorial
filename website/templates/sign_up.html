@@ -1,9 +1,11 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
 content %}
+<!-- 创建一个表单，用于用户注册 -->
 <form method="POST">
   <h3 align="center">Sign Up</h3>
   <div class="form-group">
     <label for="email">Email Address</label>
+    <!-- 输入邮箱地址 -->
     <input
       type="email"
       class="form-control"
@@ -14,6 +16,7 @@ content %}
   </div>
   <div class="form-group">
     <label for="firstName">First Name</label>
+    <!-- 输入名字 -->
     <input
       type="text"
       class="form-control"
@@ -24,6 +27,7 @@ content %}
   </div>
   <div class="form-group">
     <label for="password1">Password</label>
+    <!-- 输入密码 -->
     <input
       type="password"
       class="form-control"
@@ -34,6 +38,7 @@ content %}
   </div>
   <div class="form-group">
     <label for="password2">Password (Confirm)</label>
+    <!-- 确认密码 -->
     <input
       type="password"
       class="form-control"
@@ -43,6 +48,7 @@ content %}
     />
   </div>
   <br />
+  <!-- 提交按钮 -->
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}

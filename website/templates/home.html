@@ -2,13 +2,19 @@
 %}
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
+  <!-- 遍历用户的所有笔记 -->
   {% for note in user.notes %}
+  <!-- 为每个笔记创建一个列表项 -->
   <li class="list-group-item">
+    <!-- 显示笔记的内容 -->
     {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+    <!-- 创建一个关闭按钮，点击时调用deleteNote函数，并传入笔记的id -->
+    <button type="button" class="close" onClick="deleteNote('{{ note.id }}')">
+      <!-- 关闭按钮的图标 -->
       <span aria-hidden="true">&times;</span>
     </button>
   </li>
+  <!-- 结束遍历 -->
   {% endfor %}
 </ul>
 <form method="POST">

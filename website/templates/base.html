@@ -15,6 +15,7 @@
       crossorigin="anonymous"
     />
 
+    <!-- 设置网页标题 -->
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
@@ -29,17 +30,36 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
+          <!-- 如果用户已登录 -->
           {% if user.is_authenticated %}
+          <!-- 显示Home链接 -->
           <a class="nav-item nav-link" id="home" href="/">Home</a>
+          <!-- 显示Logout链接 -->
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <!-- 如果用户未登录 -->
           {% else %}
+          <!-- 显示Login链接 -->
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
+          <!-- 显示Sign Up链接 -->
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
           {% endif %}
         </div>
       </div>
     </nav>
+    <!-- 这段代码是使用Jinja2模板引擎编写的，主要用于在Web应用程序中显示闪现消息（flash messages）。闪现消息通常用于向用户显示操作结果或通知，例如表单提交成功或错误信息。下面是对这段代码的详细解释：
+{% with messages = get_flashed_messages(with_categories=true) %}:
 
+这行代码使用Jinja2的with语句来获取闪现消息。get_flashed_messages是一个Flask函数，用于获取存储在会话中的闪现消息。
+with_categories=true参数表示获取的消息会包含类别（category），例如'error'、'info'等。
+{% if messages %}:
+
+这行代码检查是否有闪现消息。如果有消息，则执行接下来的代码块。
+{% for category, message in messages %}:
+
+这行代码使用Jinja2的for循环遍历每个闪现消息。每个消息都是一个包含类别和消息文本的元组。
+{% if category == 'error' %}:
+
+这行代码检查当前消息的类别是否为'error'。如果是，则执行接下来的代码块。-->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
@@ -75,17 +95,17 @@
       crossorigin="anonymous"
     ></script>
 
-{% block javascript %}
+    {% block javascript %}
     <script type="text/javascript">
       function deleteNote(noteId) {
-  fetch("/delete-note", {
-    method: "POST",
-    body: JSON.stringify({ noteId: noteId }),
-  }).then((_res) => {
-    window.location.href = "/";
-  });
-  }
-</script>
-{% endblock %}
+        fetch('/delete-note', {
+          method: 'POST',
+          body: JSON.stringify({ noteId: noteId }),
+        }).then((_res) => {
+          window.location.href = '/';
+        });
+      }
+    </script>
+    {% endblock %}
   </body>
 </html>
